@@ -1,6 +1,5 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Context;
 import android.os.AsyncTask;
 import android.support.test.espresso.IdlingRegistry;
 import android.support.test.espresso.IdlingResource;
@@ -24,7 +23,7 @@ public class GetJokesAsyncTaskTest {
     public ActivityTestRule<MainActivity> mMainActivityActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     private IdlingResource mIdlingResources;
-    private AsyncTask<Context, Void, String> execute;
+    private AsyncTask<Void, Void, String> execute;
 
     @Before
     public void registerIdlingResource() {
@@ -35,7 +34,7 @@ public class GetJokesAsyncTaskTest {
     @Test
     public void onPostExecuteRun(){
 
-        execute = new GetJokesAsyncTask().execute(mMainActivityActivityTestRule.getActivity());
+        execute = new MainActivity.GetJokesAsyncTask().execute();
         try {
             assertTrue(execute.get() != null);
         } catch (InterruptedException e) {
