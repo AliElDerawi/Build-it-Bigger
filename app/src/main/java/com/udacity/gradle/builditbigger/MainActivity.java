@@ -18,7 +18,6 @@ import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
 import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 import com.nanodegree.displayjoking.DisplayJokingActivity;
-import com.nanodegree.jokingsource.JokesTellerClass;
 import com.udacity.gradle.builditbigger.backend.myApi.MyApi;
 import com.udacity.gradle.builditbigger.util.WaitingDialog;
 
@@ -108,11 +107,8 @@ public class MainActivity extends AppCompatActivity {
 
                 myApiService = builder.build();
             }
-
-            String name = JokesTellerClass.getRandomJoke();
-
             try {
-                return myApiService.sayHi(name).execute().getData();
+                return myApiService.sayHi().execute().getData();
             } catch (IOException e) {
                 return e.getMessage();
             }
